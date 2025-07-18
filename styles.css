@@ -1,0 +1,429 @@
+/* DrawDx Styles - Professional Medical Interface */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Drawing Panel */
+.drawing-panel {
+    border-right: 2px solid #f0f0f0;
+    padding-right: 30px;
+}
+
+.drawing-panel h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.body-diagram-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px dashed #dee2e6;
+}
+
+#bodyCanvas {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: crosshair;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600"><defs><style>.body{fill:%23f8f9fa;stroke:%23dee2e6;stroke-width:2}</style></defs><path class="body" d="M150 50c-20 0-35 15-35 35v30c0 10-8 18-18 18s-18-8-18-18V85c0-30 25-55 55-55h32c30 0 55 25 55 55v30c0 10-8 18-18 18s-18-8-18-18V85c0-20-15-35-35-35h-20z"/><rect class="body" x="120" y="120" width="60" height="120" rx="10"/><rect class="body" x="110" y="240" width="80" height="200" rx="15"/><rect class="body" x="125" y="440" width="50" height="80" rx="25"/><rect class="body" x="115" y="520" width="30" height="60" rx="15"/><rect class="body" x="155" y="520" width="30" height="60" rx="15"/><circle class="body" cx="150" cy="65" r="25"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+/* Drawing Controls */
+.drawing-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.intensity-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.intensity-btn {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e9ecef;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.intensity-btn:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.intensity-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.intensity-btn[data-intensity="1"] {
+    border-color: #28a745;
+}
+.intensity-btn[data-intensity="1"].active {
+    background: #28a745;
+}
+
+.intensity-btn[data-intensity="2"] {
+    border-color: #ffc107;
+}
+.intensity-btn[data-intensity="2"].active {
+    background: #ffc107;
+}
+
+.intensity-btn[data-intensity="3"] {
+    border-color: #dc3545;
+}
+.intensity-btn[data-intensity="3"].active {
+    background: #dc3545;
+}
+
+#painType {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+}
+
+#clearCanvas, #undoLast {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 2px solid #6c757d;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#clearCanvas:hover, #undoLast:hover {
+    background: #6c757d;
+    color: white;
+}
+
+/* Analysis Panel */
+.analysis-panel h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.symptom-input {
+    margin-bottom: 20px;
+}
+
+#symptomDescription {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    background: #f8f9fa;
+}
+
+#symptomDescription:focus {
+    border-color: #667eea;
+    outline: none;
+    background: white;
+}
+
+.analyze-button {
+    width: 100%;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.analyze-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.analyze-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Results Panel */
+.results-panel {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    border-left: 5px solid #667eea;
+}
+
+.results-panel h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.result-section {
+    margin-bottom: 25px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.result-section h4 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.condition-item {
+    background: #e3f2fd;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+}
+
+.condition-name {
+    font-weight: 600;
+    color: #1976d2;
+    margin-bottom: 5px;
+}
+
+.condition-probability {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.condition-description {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.recommendation-item {
+    background: #f1f8e9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50;
+    color: #2e7d32;
+}
+
+.disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    color: #856404;
+    font-size: 0.9rem;
+}
+
+.export-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#exportPDF, #shareResults {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#exportPDF:hover, #shareResults:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .drawing-panel {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 30px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    #bodyCanvas {
+        width: 250px;
+        height: 500px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+#threeJSContainer {
+    width: 100%;
+    height: 400px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

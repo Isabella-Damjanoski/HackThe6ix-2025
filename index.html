@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrawDx - Draw Your Pain, Discover the Cause</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🩺 DrawDx</h1>
+            <p class="tagline">Draw Your Pain, Discover the Cause</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Panel: Body Diagram -->
+            <div class="drawing-panel">
+                <h2>Step 1: Mark Your Pain Areas</h2>
+                <div class="body-diagram-container">
+                    <canvas id="bodyCanvas" width="300" height="600"></canvas>
+                    <img id="bodyDiagram" src="https://i.imgur.com/8fYXjKo.png" alt="Human Body Diagram" style="display: none;">
+                </div>
+                
+                <div class="drawing-controls">
+                    <div class="control-group">
+                        <label>Pain Intensity:</label>
+                        <div class="intensity-buttons">
+                            <button class="intensity-btn" data-intensity="1">Mild</button>
+                            <button class="intensity-btn active" data-intensity="2">Moderate</button>
+                            <button class="intensity-btn" data-intensity="3">Severe</button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Pain Type:</label>
+                        <select id="painType">
+                            <option value="sharp">Sharp/Stabbing</option>
+                            <option value="dull">Dull/Aching</option>
+                            <option value="burning">Burning</option>
+                            <option value="throbbing">Throbbing</option>
+                            <option value="cramping">Cramping</option>
+                            <option value="tingling">Tingling/Numbness</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <button id="clearCanvas">Clear Drawing</button>
+                        <button id="undoLast">Undo Last</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Analysis -->
+            <div class="analysis-panel">
+                <h2>Step 2: Describe Your Symptoms</h2>
+                <div class="symptom-input">
+                    <textarea id="symptomDescription" placeholder="Describe your pain in detail (optional)...
+Examples:
+- Started 3 days ago after lifting heavy box
+- Gets worse when I bend over
+- Radiates down my leg
+- Happens mostly in the morning"></textarea>
+                </div>
+
+                <button id="analyzeBtn" class="analyze-button">
+                    🔍 Analyze My Symptoms
+                </button>
+
+                <div id="loadingSpinner" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing your symptoms...</p>
+                </div>
+
+                <div id="resultsPanel" class="results-panel" style="display: none;">
+                    <h3>📋 Analysis Results</h3>
+                    
+                    <div class="result-section">
+                        <h4>🎯 Affected Areas</h4>
+                        <div id="affectedAreas"></div>
+                    </div>
+
+                    <div class="result-section">
+                        <h4>🤔 Possible Conditions</h4>
+                        <div id="possibleConditions"></div>
+                    </div>
+
+                    <div class="result-section">
+                        <h4>💡 Recommendations</h4>
+                        <div id="recommendations"></div>
+                    </div>
+
+                    <div class="disclaimer">
+                        ⚠️ <strong>Medical Disclaimer:</strong> This tool is for informational purposes only and should not replace professional medical advice. Please consult with a healthcare provider for proper diagnosis and treatment.
+                    </div>
+
+                    <div class="export-options">
+                        <button id="exportPDF">📄 Export Report</button>
+                        <button id="shareResults">📤 Share with Doctor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Model Modal (Optional Enhancement) -->
+        <div id="model3D" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>3D Anatomical View</h3>
+                <div id="threeJSContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "demo_scenarios": [
+    {
+      "name": "Lower Back Pain",
+      "description": "Sharp pain in lower back after lifting heavy box",
+      "pain_areas": [
+        {
+          "coordinates": [{"x": 140, "y": 220}, {"x": 160, "y": 240}],
+          "intensity": 3,
+          "pain_type": "sharp",
+          "body_region": ["pelvis"]
+        }
+      ],
+      "expected_conditions": ["Lower Back Strain", "Sciatica", "Muscle Spasm"]
+    },
+    {
+      "name": "Tension Headache",
+      "description": "Throbbing pain in temples, stress-related",
+      "pain_areas": [
+        {
+          "coordinates": [{"x": 120, "y": 40}, {"x": 180, "y": 60}],
+          "intensity": 2,
+          "pain_type": "throbbing",
+          "body_region": ["head_neck"]
+        }
+      ],
+      "expected_conditions": ["Tension Headache", "Migraine", "Stress Response"]
+    },
+    {
+      "name": "Shoulder Pain",
+      "description": "Dull ache in right shoulder, worse with movement",
+      "pain_areas": [
+        {
+          "coordinates": [{"x": 190, "y": 100}, {"x": 210, "y": 120}],
+          "intensity": 2,
+          "pain_type": "dull",
+          "body_region": ["arms"]
+        }
+      ],
+      "expected_conditions": ["Rotator Cuff Strain", "Shoulder Impingement", "Bursitis"]
+    }
+  ],
+  "test_coordinates": {
+    "head": {"x": 150, "y": 50},
+    "neck": {"x": 150, "y": 90},
+    "chest": {"x": 150, "y": 140},
+    "abdomen": {"x": 150, "y": 190},
+    "pelvis": {"x": 150, "y": 230},
+    "left_arm": {"x": 100, "y": 120},
+    "right_arm": {"x": 200, "y": 120},
+    "left_leg": {"x": 135, "y": 350},
+    "right_leg": {"x": 165, "y": 350}
+  }
+}
